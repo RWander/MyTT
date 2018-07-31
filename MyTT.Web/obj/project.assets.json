@@ -2,6 +2,26 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.1": {
+      "Humanizer.Core/2.4.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Humanizer.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Humanizer.dll": {}
+        }
+      },
+      "Humanizer.Core.ru/2.4.2": {
+        "type": "package",
+        "dependencies": {
+          "Humanizer.Core": "[2.4.2]"
+        },
+        "resource": {
+          "lib/netstandard2.0/ru/Humanizer.resources.dll": {
+            "locale": "ru"
+          }
+        }
+      },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
         "type": "package",
         "dependencies": {
@@ -4777,6 +4797,32 @@
     }
   },
   "libraries": {
+    "Humanizer.Core/2.4.2": {
+      "sha512": "bdHOGpZNL92TebkGuaBe/RpxUrDeRDZQLRdFPEbM+miGV1V3ITmw6iZtGYzp44DUd60Fmw5mgHG2HaFSC4hQdQ==",
+      "type": "package",
+      "path": "humanizer.core/2.4.2",
+      "files": [
+        ".signature.p7s",
+        "humanizer.core.2.4.2.nupkg.sha512",
+        "humanizer.core.nuspec",
+        "lib/netstandard1.0/Humanizer.dll",
+        "lib/netstandard1.0/Humanizer.xml",
+        "lib/netstandard2.0/Humanizer.dll",
+        "lib/netstandard2.0/Humanizer.xml"
+      ]
+    },
+    "Humanizer.Core.ru/2.4.2": {
+      "sha512": "jojisKQVTTevLX4saxWxnN1lHD/7w1ojCUt2cNyWDNjsMLnRzr7v4I9/KAqunpapasIMuzIwzxmz/NstfZC5kQ==",
+      "type": "package",
+      "path": "humanizer.core.ru/2.4.2",
+      "files": [
+        ".signature.p7s",
+        "humanizer.core.ru.2.4.2.nupkg.sha512",
+        "humanizer.core.ru.nuspec",
+        "lib/netstandard1.0/ru/Humanizer.resources.dll",
+        "lib/netstandard2.0/ru/Humanizer.resources.dll"
+      ]
+    },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
       "sha512": "rMDlyePoxggkmN/qgha1+BR2Uy+dOr38xKCQOPfVNKGY07R2nYJGMTKJFE1XFgwD70RYUNazf2fqutjJF18XgQ==",
       "type": "package",
@@ -12536,6 +12582,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
+      "Humanizer.Core.ru >= 2.4.2",
       "Microsoft.AspNetCore.App >= 2.1.1",
       "Microsoft.EntityFrameworkCore.Sqlite >= 2.1.1",
       "Microsoft.NETCore.App >= 2.1.0",
@@ -12549,11 +12596,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\MyTT\\MyTT.Web\\MyTT.Web.csproj",
+      "projectUniqueName": "c:\\MyTT\\MyTT.Web\\MyTT.Web.csproj",
       "projectName": "MyTT.Web",
-      "projectPath": "C:\\MyTT\\MyTT.Web\\MyTT.Web.csproj",
+      "projectPath": "c:\\MyTT\\MyTT.Web\\MyTT.Web.csproj",
       "packagesPath": "C:\\Users\\Roman_Korneev\\.nuget\\packages\\",
-      "outputPath": "C:\\MyTT\\MyTT.Web\\obj\\",
+      "outputPath": "c:\\MyTT\\MyTT.Web\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12583,6 +12630,10 @@
     "frameworks": {
       "netcoreapp2.1": {
         "dependencies": {
+          "Humanizer.Core.ru": {
+            "target": "Package",
+            "version": "[2.4.2, )"
+          },
           "Microsoft.AspNetCore.App": {
             "suppressParent": "All",
             "target": "Package",

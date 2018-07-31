@@ -1,4 +1,7 @@
 @model PlanViewModel
+@using System.Globalization
+@using Humanizer
+
 @{ ViewData["Title"] = "Тренировочный план на неделю"; }
 
 <div class="panel panel-default todo-panel">
@@ -17,7 +20,7 @@
                 <input type="checkbox" class="done-checkbox">
             </td>
             <td>@item.Title</td>
-            <td>@item.DueAt</td>
+            <td>@item.DueAt.Humanize(culture: new CultureInfo("ru-RU"))</td>
         </tr>
         }
     </table>
