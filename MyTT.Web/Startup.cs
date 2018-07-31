@@ -9,9 +9,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MyTT.Web.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
+using MyTT.Web.Data;
+using MyTT.Web.Services;
 
 namespace MyTT.Web
 {
@@ -41,6 +43,8 @@ namespace MyTT.Web
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddSingleton<IPlaneService, FakePlaneService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
