@@ -1,6 +1,10 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
+using Microsoft.EntityFrameworkCore;
+
+using MyTT.Web.Data;
 using MyTT.Web.Models;
 
 namespace MyTT.Web.Services
@@ -10,21 +14,20 @@ namespace MyTT.Web.Services
         Task<PlanItem[]> GetPlanAsync();
     }
 
-    public sealed class FakePlaneService : IPlaneService
+    public sealed class PlaneService : IPlaneService
     {
-        public Task<PlanItem[]> GetPlanAsync()
+        private readonly ApplicationDbContext _context;
+
+        public PlaneService(ApplicationDbContext context)
         {
-            var item1 = new PlanItem
-            {
-                Title = "Learn ASP.NET Core",
-                DueAt = DateTimeOffset.Now.AddDays(1)
-            };
-            var item2 = new PlanItem
-            {
-                Title = "Build awesome apps",
-                DueAt = DateTimeOffset.Now.AddDays(2)
-            };
-            return Task.FromResult(new[] { item1, item2 });
+            _context = context;
+        }
+
+        public async Task<PlanItem[]> GetPlanAsync()
+        {
+            return await _context.PlanItems
+                .Where(x => x.IsDone == false)
+                .ToArrayAsync();
         }
     }
 }

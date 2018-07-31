@@ -38,13 +38,15 @@ namespace MyTT.Web
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                    Configuration.GetConnectionString("DefaultConnection")
+                )
+            );
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddSingleton<IPlaneService, FakePlaneService>();
+            services.AddScoped<IPlaneService, PlaneService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
