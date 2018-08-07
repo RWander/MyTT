@@ -10,6 +10,13 @@ namespace MyTT.Web.Models {
         [Required]
         public string Title { get; set; }
 
-        public DateTimeOffset DueAt { get; set; }
+        [Required]
+        [DataType(DataType.Date)]
+        public DateTime DueAt { get; set; }
+
+        [Required]
+        [DataType(DataType.Time)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:hh\\:mm}")]
+        public TimeSpan Time { get; set; }
     }
 }

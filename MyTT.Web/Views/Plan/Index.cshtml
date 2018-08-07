@@ -25,6 +25,12 @@
         }
     </table>
     <div class="panel-footer add-plan-item-form">
-        @await Html.PartialAsync("AddPlanItemPartial", new PlanItem())
+        @await Html.PartialAsync(
+            "AddPlanItemPartial",
+            new PlanItem() {
+                DueAt = DateTime.Now.AddDays(1),
+                Time = new TimeSpan(8, 0, 0)
+            }
+        )
     </div>
 </div>

@@ -3,10 +3,14 @@
 <form asp-action="AddPlanItem" method="POST">
     <!-- Title -->
     <label asp-for="Title">Навазвание тренировки:</label>
-    <input asp-for="Title">
+    <input asp-for="Title" type="text">
 
     <!-- DueAt -->
-    <!-- ..... -->
+    <label asp-for="DueAt">Когда:</label>
+    <input asp-for="DueAt" type="date">
+
+    <!-- Time -->
+    <input asp-for="Time" type="time">
 
     <button type="submit">Добавить</button>
 </form>

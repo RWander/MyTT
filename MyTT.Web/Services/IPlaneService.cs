@@ -35,7 +35,6 @@ namespace MyTT.Web.Services
         {
             item.Id = Guid.NewGuid();
             item.IsDone = false;
-            item.DueAt = DateTimeOffset.Now.AddDays(3);
 
             _context.PlanItems.Add(item);
 
