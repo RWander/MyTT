@@ -28,5 +28,22 @@ namespace MyTT.Web.Controllers
             };
             return View(model);
         }
+
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddPlanItem(PlanItem item)
+        {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Index");
+            }
+
+            var successful = await _planeSrvc.AddPlanItemAsync(item);
+            if (!successful)
+            {
+                return BadRequest("Could not add item.");
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }
