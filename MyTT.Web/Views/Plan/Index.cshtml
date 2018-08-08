@@ -2,7 +2,9 @@
 @using System.Globalization
 @using Humanizer
 
-@{ ViewData["Title"] = "Тренировочный план на неделю"; }
+@{ 
+    ViewData["Title"] = "Тренировочный план на неделю";
+}
 
 <div class="panel panel-default todo-panel">
     <div class="panel-heading">@ViewData["Title"]</div>
@@ -17,7 +19,10 @@
         @foreach (var item in Model.Items) {
         <tr>
             <td>
-                <input type="checkbox" class="done-checkbox">
+                <form asp-action="MarkDone" method="POST">
+                    <input type="checkbox" class="done-checkbox">
+                    <input type="hidden" name="id" value="@item.Id">
+                </form>
             </td>
             <td>@item.Title</td>
             <td>@item.DueAt.Humanize(culture: new CultureInfo("ru-RU"))</td>
@@ -30,7 +35,7 @@
             new PlanItem() {
                 DueAt = DateTime.Now.AddDays(1),
                 Time = new TimeSpan(8, 0, 0)
-            }
+            } 
         )
     </div>
 </div>

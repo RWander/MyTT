@@ -13,6 +13,7 @@ namespace MyTT.Web.Services
     {
         Task<PlanItem[]> GetPlanAsync();
         Task<bool> AddPlanItemAsync(PlanItem item);
+        Task<bool> MarkDoneAsync(Guid id);
     }
 
     public sealed class PlaneService : IPlaneService
@@ -40,6 +41,20 @@ namespace MyTT.Web.Services
 
             var saveResult = await _context.SaveChangesAsync();
             return saveResult == 1;
+        }
+
+        public async Task<bool> MarkDoneAsync(Guid id)
+        {
+            var item = await _context.PlanItems
+                .Where(x => x.Id == id)
+                .SingleOrDefaultAsync();
+
+            if (item == null) return false;
+
+            item.IsDone = true;
+            
+            var saveResult = await _context.SaveChangesAsync();
+            return saveResult == 1; // One entity should have been updated
         }
     }
 }
